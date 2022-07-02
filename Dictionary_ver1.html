@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <body style = "text-align:center;">
+  <p id = "My_Style" style = "color:blueviolet; font-size: 20px; font-weight: bold;"></p> 
+  <input type="text" id="text"></input>
+  <input type="button" value="Search for the word in the dictionary" onclick="search_word();"></input>
+  <input type="button" value="Add word to dictionary" onclick="add_element_to_array();"></input>  
+  
+  <script type="text/javascript">
+    let x = 0;
+    document.getElementById("My_Style").innerHTML = "Hello, please write a word in the below space and then you can check if it exists in the dictionary</br> If the word does not exist in the dictionary, you can add it!";
+    const array = Array();
+
+    function search_word() {
+      if (document.getElementById("text").value != "") {
+        document.getElementById("My_Style").innerHTML = "This word does not exist in this dictionary.</br> You can add it if you click the -Add word to dictionary- button!";
+        for (var i = 0; i < x; ++i) {
+          if (array[i] == document.getElementById("text").value.toLowerCase()) {
+            document.getElementById("My_Style").innerHTML = "The searched word -" + array[i] + "-, is already in the dictionary at the position: " + i + "</br>You can write a new word if you like.";
+            document.getElementById("text").value = "";
+            break;
+          }
+        }
+      }
+    }
+
+    function add_element_to_array() {
+      if (document.getElementById("text").value != "") {
+        array[x] = document.getElementById("text").value.toLowerCase();
+        document.getElementById("My_Style").innerHTML = "The word -" + array[x] + "-, was successfully added to the dictionary at the position: " + x + "</br>You can write a new word if you like.";
+        ++x;
+        document.getElementById("text").value = "";
+      }
+    }
+  </script>
+</html>
